@@ -1,16 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import routes from './routes/routes';
+import React from "react";
+import logo from "./logo.svg";
+import routes from "./routes/routes";
 import { useRoutes } from "raviger";
-import './App.css';
+import "./App.css";
+import Canvas from "./components/website/canvas";
+import Menu from "./components/website/menu";
+import NavBar from "./components/website/navbar";
 
 function App() {
   let route = useRoutes(routes);
 
   return (
-  <div>
-    {route}
-  </div>
+    <div className="flex flex-row w-screen h-screen">
+      <Menu></Menu>
+      <Canvas>
+        <NavBar page="My Scans"></NavBar>
+        <div className="content py-5 my-5">{route}</div>
+      </Canvas>
+    </div>
   );
 
   // return (

@@ -11,7 +11,7 @@ function ScanCard(props: any) {
       info: 0,
     },
     id: 0,
-    name: `Custom Scan 0`,
+    name: `Custom Scan ${scanId}`,
     description: "Untitled Scan - Scanned on 2022-09-25",
     timestamp: "2022-09-25T20:01:14.486Z",
   };
@@ -21,7 +21,7 @@ function ScanCard(props: any) {
   // headers.append("Access-Control-Allow-Origin ", "*")
   const getScanResults: any = async (scanId: number) => {
     const res = await fetch(
-      `http://localhost:8000/api/v1/history/peek/${scanId}`,
+      `http://localhost:8000/api/v1/scanner/peek/${scanId}`,
       {
         method: "GET",
         mode: "cors",
@@ -71,7 +71,7 @@ function ScanCard(props: any) {
           </div>
         </div>
         {/* <a
-        //   href={`http://localhost:8000/api/v1/history/info/${scanId}`}
+        //   href={`http://localhost:8000/api/v1/scanner/info/${scanId}`}
           href={`/scans/${scanId}`}
           className="px-5 py-2 my-5 mx-5 rounded-md text-gray-700 border-2 border-gray-700 hover:text-white hover:bg-gray-700"
         >

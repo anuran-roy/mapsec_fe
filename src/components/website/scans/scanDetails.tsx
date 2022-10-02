@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Menu from "../menu";
-import Canvas from "../canvas";
-import NavBar from "../navbar";
+import React, { useState } from "react";
 
 function ScanDetails(props: any) {
   const scanId: any = props.scanId;
@@ -57,9 +54,10 @@ function ScanDetails(props: any) {
       },
     },
   };
+  
   const getScanDetails: any = async (scanId: number) => {
     const res = await fetch(
-      `http://localhost:8000/api/v1/history/info/${scanId}`,
+      `http://localhost:8000/api/v1/scanner/info/${scanId}`,
       {
         method: "GET",
         mode: "cors",
@@ -82,10 +80,7 @@ function ScanDetails(props: any) {
 
   //   console.log(threatReport);
   return (
-    <div className="flex flex-row w-screen h-screen">
-      <Menu></Menu>
-      <Canvas>
-        <NavBar page="Scans"></NavBar>
+    <>
         <div className="rounded-md m-5 p-3 bg-white w-100">
           <h2 className="font-bold text-left px-3 text-2xl text-gray-600">{threatReport?.name}</h2>
           <div className="p-3 my-3 italic text-gray-500 text-left text-md">{threatReport?.description}</div>
@@ -119,8 +114,7 @@ function ScanDetails(props: any) {
             </div>
           </div>
         </div>
-      </Canvas>
-    </div>
+    </>
   );
 }
 
