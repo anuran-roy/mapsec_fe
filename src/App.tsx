@@ -9,12 +9,12 @@ import NavBar from "./components/website/navbar";
 
 function App() {
   let route = useRoutes(routes);
-
+  let path=route?.props.path.substring(route?.props.path.lastIndexOf("/") + 1, route?.props.path.length);
   return (
     <div className="flex flex-row w-screen h-screen">
       <Menu></Menu>
       <Canvas>
-        <NavBar page="My Scans"></NavBar>
+        <NavBar page={path}></NavBar>
         <div className="content py-5 my-5">{route}</div>
       </Canvas>
     </div>

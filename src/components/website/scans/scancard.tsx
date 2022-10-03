@@ -17,32 +17,24 @@ function ScanCard(props: any) {
   };
   //   };
 
+  const [threatPeekReport, setThreatPeekReport] = useState<any>(defaultScanResults);
+
   // let headers = new Headers();
   // headers.append("Access-Control-Allow-Origin ", "*")
-  const getScanResults: any = async (scanId: number) => {
-    const res = await fetch(
+  const getScanResults = () => {
+    fetch(
       `http://localhost:8000/api/v1/scanner/peek/${scanId}`,
       {
         method: "GET",
         mode: "cors",
         // headers: headers
       }
-    );
-
-    const jsonData = await res.json();
-
-    return jsonData;
+    ).then(res => res.json()).then(res => setThreatPeekReport(res));
   };
 
-  const [threatPeekReport, setThreatPeekReport] = useState<any>(defaultScanResults);
+  useEffect(() => getScanResults(), []);
 
-  if (threatPeekReport === defaultScanResults) {
-    getScanResults(scanId)
-      // .then((results: any) => results.json())
-      .then((results: any) => setThreatPeekReport(results));
-  }
-
-    // useEffect(() => getScanResults(scanId).then((results: any) => setThreatPeekReport(results)), [threatPeekReport === defaultScanResults])
+  // useEffect(() => getScanResults(scanId).then((results: any) => setThreatPeekReport(results)), [threatPeekReport === defaultScanResults])
   //   const threatPeekReport = getScanResults();
   //   console.log(threatPeekReport);
 

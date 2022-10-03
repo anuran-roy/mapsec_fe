@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function NormalCard(props: any) {
-    return (<div></div>);
-};
+  return <div></div>;
+}
 
 function ScrollableCard(props: any) {
-    return (<div></div>);
-};
+  return <div></div>;
+}
 
 export { NormalCard, ScrollableCard };

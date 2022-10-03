@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-
 function Canvas(props: any) {
-    return (
+  return (
     <div className="w-screen h-screen rounded-md bg-gray-100 overflow-y-auto items-center object-center text-center">
-        {props.children}
-    </div>);
+      {props.children}
+    </div>
+  );
 }
 
 export default Canvas;

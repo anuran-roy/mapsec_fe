@@ -54,7 +54,7 @@ function ScanDetails(props: any) {
       },
     },
   };
-  
+
   const getScanDetails: any = async (scanId: number) => {
     const res = await fetch(
       `http://localhost:8000/api/v1/scanner/info/${scanId}`,
@@ -81,39 +81,82 @@ function ScanDetails(props: any) {
   //   console.log(threatReport);
   return (
     <>
-        <div className="rounded-md m-5 p-3 bg-white w-100">
-          <h2 className="font-bold text-left px-3 text-2xl text-gray-600">{threatReport?.name}</h2>
-          <div className="p-3 my-3 italic text-gray-500 text-left text-md">{threatReport?.description}</div>
+      <div className="rounded-md m-5 p-3 bg-white w-100">
+        <h2 className="font-bold text-left px-3 text-2xl text-gray-600">
+          {threatReport?.name}
+        </h2>
+        <div className="p-3 my-3 italic text-gray-500 text-left text-md">
+          {threatReport?.description}
         </div>
-        <div className="grid grid-cols-3">
-          <div className="col-span-1 p-3 mx-5 bg-white">
-            <h3 className="font-bold text-left px-3 text-2xl text-gray-600">Stats for {threatReport?.target_device.name}</h3>
+      </div>
+      <div className="grid grid-cols-3">
+        <div className="col-span-1 p-3 mx-5 bg-white">
+          <h3 className="font-bold text-left px-3 text-2xl text-gray-600">
+            Stats for {threatReport?.target_device.name}
+          </h3>
+        </div>
+        <div className="col-span-2 p-3 mx-5 bg-white">
+          <h3 className="font-bold text-left px-3 text-2xl text-gray-600">
+            Stats for {threatReport?.target_device.name}
+          </h3>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
           </div>
-          <div className="col-span-2 p-3 mx-5 bg-white">
-            <h3 className="font-bold text-left px-3 text-2xl text-gray-600">Stats for {threatReport?.target_device.name}</h3>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus porro, velit sequi dolore, repudiandae nam neque, aspernatur est dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem quis quisquam, nobis harum vitae sapiente.
-            </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima
+            voluptates nisi repudiandae. Ipsum saepe nemo itaque quaerat natus
+            porro, velit sequi dolore, repudiandae nam neque, aspernatur est
+            dolorem sunt corrupti distinctio ex maiores nulla incidunt. Omnis
+            blanditiis, aliquam, voluptatibus eveniet voluptas tempora autem
+            quis quisquam, nobis harum vitae sapiente.
           </div>
         </div>
+      </div>
     </>
   );
 }
