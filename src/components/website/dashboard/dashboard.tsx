@@ -49,8 +49,16 @@ function Dashboard() {
           ]}
           layout={{
             yaxis: {
+              autotick: false,
               tickmode: "linear",
               tick0: 0,
+              zeroline: true,
+            },
+            xaxis: {
+              autotick: false,
+              tickmode: "linear",
+              tick0: "01-01-1970",
+              zeroline: true,
             },
             // barmode: "stack",
             showlegend: false,
@@ -67,11 +75,7 @@ function Dashboard() {
           <div className="flex-1 space-y-6 py-1">
             <div className="h-96 mx-6 my-3 rounded-md bg-slate-200 rounded text-4xl font-bold align-middle flex flex-col text-slate-400 justify-center">Getting Analytics...</div>
             <div className="space-y-3">
-              <div className="grid grid-cols-3 gap-4">
-                {/* <div className="h-2 bg-slate-200 rounded col-span-2">Getting Analytics</div> */}
-                {/* <div className="h-2 bg-slate-200 rounded col-span-1"></div> */}
-              </div>
-              {/* <div className="h-2 bg-slate-200 rounded"></div> */}
+              <div className="grid grid-cols-3 gap-4"></div>
             </div>
           </div>
         </div>
