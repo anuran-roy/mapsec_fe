@@ -8,7 +8,7 @@ export default function NewScan(props: any) {
     scanDetails: any = {
       scope: "all",
       details: { ip: "192.168.0.1" },
-      timestamp: "2022-10-02T17:54:44.476Z",
+      timestamp: new Date(),
       target_device: {
         name: "Realme Narzo 20 Pro",
         model_number: "RMX2161",
@@ -40,7 +40,7 @@ export default function NewScan(props: any) {
   useEffect(() => setScanContent(StartScan()), []);
 
   if (scanArrived === true) {
-    console.log(`scanContent = ${scanContent}`);
+    // console.log(`scanContent = ${scanContent}`);
   }
   // console.log(scanContent);
 
@@ -64,41 +64,43 @@ export default function NewScan(props: any) {
               </div>
             </div>
           ) : (
-            Object.keys(scanContent.report).map((ele: any) => {
+            Object.keys(scanContent?.report).map((ele: any, idx: number) => {
               return (
-                <>
+                <div key={`ele-${idx}`}>
                   <div className="flex flex-col">
-            Id: {scanContent?.id}
-            <br />
-            Description: {scanContent.description}
-            <br />
-            Timestamp: {scanContent.timestamp}
-            <br />
-          </div>
+                    Id: {scanContent?.id}
+                    <br />
+                    Description: {scanContent?.description}
+                    <br />
+                    Timestamp: {scanContent?.timestamp}
+                    <br />
+                  </div>
                   <h3 className="text-4xl text-gray-700 font-bold m-3 capitalize">
                     {ele}
                   </h3>
                   <div>
-                    {scanContent?.report[ele].details.map((details: any) => {
-                      return (
-                        <>
+                    {scanContent?.report[ele].details.map(
+                      (details: any, int_idx: number) => {
+                        return (
                           <div>
-                            <div className="font-bold">Type:</div>{" "}
-                            {details.type}
+                            <div>
+                              <div className="font-bold">Type:</div>{" "}
+                              {details.type}
+                            </div>
+                            <div>
+                              <div className="font-bold">Description:</div>{" "}
+                              {details.description}
+                            </div>
+                            <div>
+                              <div className="font-bold">Timestamp:</div>{" "}
+                              {details.timestamp}
+                            </div>
                           </div>
-                          <div>
-                            <div className="font-bold">Description:</div>{" "}
-                            {details.description}
-                          </div>
-                          <div>
-                            <div className="font-bold">Timestamp:</div>{" "}
-                            {details.timestamp}
-                          </div>
-                        </>
-                      );
-                    })}
+                        );
+                      }
+                    )}
                   </div>
-                </>
+                </div>
               );
             })
           )}
