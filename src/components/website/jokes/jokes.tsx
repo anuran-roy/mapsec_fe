@@ -11,7 +11,7 @@ export default function InsertJoke(props: any) {
       .then((data) => setJoke(data))
       .catch((err) => console.error(err));
 
-    console.log(joke);
+    // console.log(joke);
 
     return joke[0];
   };
