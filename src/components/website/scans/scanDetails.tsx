@@ -78,8 +78,11 @@ function ScanDetails(props: any) {
         <h2 className="font-bold text-left px-3 text-2xl text-gray-600">
           {threatReport?.name}
         </h2>
-        <div className="p-3 my-3 italic text-gray-500 text-left text-md">
-          {threatReport?.description}
+        <div className="flex flex-row mx-3 my-3 italic text-gray-500 text-left text-md">
+          <div className="font-bold">{threatReport?.timestamp}</div>: {threatReport?.description}
+        </div>
+        <div className="flex flex-row mx-3 my-3 italic text-gray-500 text-left text-md">
+          <div className="font-bold">Scanned from</div>: {threatReport?.device}
         </div>
       </div>
       <div className="grid grid-cols-3">
