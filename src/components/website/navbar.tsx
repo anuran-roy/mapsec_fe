@@ -1,6 +1,6 @@
 function NavBar(props: any) {
   return (
-    <div className="navbar py-3 bg-gray-100 flex flex-row sticky top-0 z-50 shadow-md">
+    <div className="navbar py-3 bg-gray-100 flex flex-row sticky top-0 shadow-md">
       <h1 className="capitalize text-4xl top-0 px-5 py-1 font-bold text-gray-600 justify-self-center text-left">
         {props.page}
       </h1>

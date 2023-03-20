@@ -23,7 +23,7 @@ function ScanCard(props: any) {
   // let headers = new Headers();
   // headers.append("Access-Control-Allow-Origin ", "*")
   const getScanResults = () => {
-    fetch(`http://localhost:8000/api/v1/scanner/peek/${scanId}`, {
+    fetch(`http://localhost:8000/api/v1/vulnerabilities/peek/${scanId}`, {
       method: "GET",
       mode: "cors",
       // headers: headers
@@ -66,7 +66,7 @@ function ScanCard(props: any) {
           </div>
         </div>
         {/* <a
-        //   href={`http://localhost:8000/api/v1/scanner/info/${scanId}`}
+        //   href={`http://localhost:8000/api/v1/vulnerabilities/info/${scanId}`}
           href={`/scans/${scanId}`}
           className="px-5 py-2 my-5 mx-5 rounded-md text-gray-700 border-2 border-gray-700 hover:text-white hover:bg-gray-700"
         >

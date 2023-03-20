@@ -1,6 +1,8 @@
+import setPageTitle from "../../../utils/setPageTitle";
 import InsertJoke from "../jokes/jokes";
 
 function CommonError(props: any) {
+  setPageTitle("MapSec");
   return (
     <>
       <div className="flex flex-col items-center justify-center bg-gray-100 top-0 bottom-0 left-0 right-0 align-middle max-w-screen h-screen font-bold text-center">

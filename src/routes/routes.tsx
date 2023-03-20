@@ -7,6 +7,7 @@ import ComingSoon from "../components/website/errors/coming_soon";
 import NewScan from "../components/website/scans/newScan";
 import About from "../components/website/about";
 import Account from "../components/website/account/account";
+import CredentialsList from "../components/website/credentials/credentialsList";
 
 const routes = {
   "/": () => <Redirect to="/web/dashboard"></Redirect>,
@@ -21,7 +22,7 @@ const routes = {
   "/web/devices": () => <ComingSoon />,
   "/web/threats": () => <ComingSoon />,
   "/web/insights": () => <ComingSoon />,
-  "/web/credentials": () => <ComingSoon />,
+  "/web/credentials": () => <CredentialsList />,
   "/web/controllers": () => <ComingSoon />,
   "/web/network": () => <ComingSoon />,
   "*": () => <NotFound404 />,

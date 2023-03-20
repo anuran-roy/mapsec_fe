@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import setPageTitle from "../../../utils/setPageTitle";
 
 function ScanDetails(props: any) {
   const scanId: any = props.scanId;
@@ -58,7 +59,7 @@ function ScanDetails(props: any) {
   const [threatReport, setThreatReport] = useState<any>(defaultScanDetails);
 
   const getScanDetails: any = () => {
-    fetch(`http://localhost:8000/api/v1/scanner/info/${scanId}`, {
+    fetch(`http://localhost:8000/api/v1/vulnerabilities/info/${scanId}`, {
       method: "GET",
       mode: "cors",
       // headers: headers
@@ -68,6 +69,8 @@ function ScanDetails(props: any) {
         setThreatReport(res);
       });
   };
+
+  setPageTitle(`Scan ${scanId}- MapSec`);
 
   useEffect(() => getScanDetails(), []);
 

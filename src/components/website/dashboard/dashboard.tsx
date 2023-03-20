@@ -4,6 +4,7 @@ import NavBar from "../navbar";
 import ScanCard from "../scans/scancard";
 import InsertJoke from "../jokes/jokes";
 import Plot from "react-plotly.js";
+import setPageTitle from "../../../utils/setPageTitle";
 
 function Dashboard() {
   const [analyticsArrived, setAnalyticsArrived] = useState<boolean>(false);
@@ -12,8 +13,14 @@ function Dashboard() {
     [2, 6, 3],
   ]);
 
+  const [graphParams, setGraphParams] = useState<any>({
+    freq: 'D',
+    threat_type: 'all',
+  });
+  setPageTitle("Dashboard - MapSec");
+
   const getAnalytics = () => {
-    fetch("http://localhost:8000/api/v1/analytics/scanhistory", {
+    fetch(`http://localhost:8000/api/v1/analytics/scanhistory?${new URLSearchParams(graphParams).toString()}`, {
       method: "GET",
       mode: "cors",
       // body: JSON.stringify(scanDetails),
@@ -36,40 +43,59 @@ function Dashboard() {
         <InsertJoke />
       </div>
       <div className="max-w-screen">{analyticsArrived ? (<Plot
-          className="m-5"
-          data={[
-            {
-              x: analyticsData[0],
-              y: analyticsData[1],
-              type: "scatter",
-              mode: "lines+markers",
-              // marker: {color: '22c55e'},
-            },
-            // {type: 'bar', marker: {color: "22c55e"}, x: [1, 2, 3], y: [2, 5, 3]},
-          ]}
-          layout={{
-            yaxis: {
-              autotick: false,
-              tickmode: "linear",
-              tick0: 0,
-              zeroline: true,
-            },
-            xaxis: {
-              autotick: false,
-              tickmode: "linear",
-              tick0: "01-01-1970",
-              zeroline: true,
-            },
-            // barmode: "stack",
-            showlegend: false,
-            paper_bgcolor: "f3f4f6",
-            plot_bgcolor: "f3f4f6",
-            width: 1280,
-            height: 720,
-            // responsive: true,
-            title: "Vulnerabilities count across time",
-          }}
-        />): (<div className="rounded-md p-4 max-w-6xl w-full mx-auto">
+        className="m-5"
+        data={[
+          {
+            x: analyticsData[0],
+            y: analyticsData[1][0],
+            type: "scatter",
+            mode: "lines+markers",
+            marker: { color: 'ff2300' },
+            name: "critical",
+          },
+          {
+            x: analyticsData[0],
+            y: analyticsData[1][1],
+            type: "scatter",
+            mode: "lines+markers",
+            marker: { color: 'eaa500' },
+            name: "warnings",
+          },
+          {
+            x: analyticsData[0],
+            y: analyticsData[1][2],
+            type: "scatter",
+            mode: "lines+markers",
+            marker: { color: '22c55e' },
+            name: "info",
+
+          },
+          // {type: 'bar', marker: {color: "22c55e"}, x: [1, 2, 3], y: [2, 5, 3]},
+        ]}
+        layout={{
+          yaxis: {
+            autotick: false,
+            tickmode: "linear",
+            tick0: 0,
+            zeroline: true,
+            dtick: 5,
+          },
+          xaxis: {
+            autotick: false,
+            tickmode: "linear",
+            tick0: "01-01-1970",
+            zeroline: true,
+          },
+          // barmode: "stack",
+          showlegend: false,
+          paper_bgcolor: "f3f4f6",
+          plot_bgcolor: "f3f4f6",
+          width: 1280,
+          height: 720,
+          // responsive: true,
+          title: "Vulnerabilities count across time",
+        }}
+      />) : (<div className="rounded-md p-4 max-w-6xl w-full mx-auto">
         <div className="animate-pulse flex space-x-4">
           {/* <div className="rounded-full bg-slate-200 h-10 w-10"></div> */}
           <div className="flex-1 space-y-6 py-1">
@@ -81,7 +107,7 @@ function Dashboard() {
         </div>
       </div>)}
       </div>
-      <br />
+      {/* <br />
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate,
       maxime.
       <br />
@@ -93,7 +119,7 @@ function Dashboard() {
       <br />
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate,
       maxime.
-      <br />
+      <br /> */}
     </>
   );
 }

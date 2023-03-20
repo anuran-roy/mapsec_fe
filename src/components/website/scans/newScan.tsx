@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import setPageTitle from "../../../utils/setPageTitle";
 // import { navigate, Redirect, ActiveLink } from "raviger";
 
 export default function NewScan(props: any) {
@@ -17,7 +18,7 @@ export default function NewScan(props: any) {
     }
   ) => {
     try {
-      fetch("http://localhost:8000/api/v1/scanner/new", {
+      fetch("http://localhost:8000/api/v1/vulnerabilities/scan", {
         method: "POST",
         mode: "cors",
         body: JSON.stringify(scanDetails),
@@ -25,7 +26,9 @@ export default function NewScan(props: any) {
       })
         .then((res) => res.json())
         .then((jsonData) => {
-          setScanArrived(true);
+          if (jsonData.message !== "Scan started successfully") {
+            setScanArrived(true);
+          }
           setScanContent(jsonData);
         });
       // return jsonData;
@@ -44,24 +47,31 @@ export default function NewScan(props: any) {
   }
   // console.log(scanContent);
 
+  setPageTitle("New Scan - MapSec");
+
   return (
     <div className="h-screen max-w-screen opacity-100 hover:opacity-100 bg-gray-100">
       {/* {scanArrived === false ? <div>Scanning...</div> : <></>} */}
       <div className="flex flex-col rounded-md p-3 opacity-100 text-left mx-5 my-3 px-3 py-1 bg-white">
         <div className="flex flex-col">
           {scanArrived === false ? (
-            <div className="animate-pulse flex space-x-4 space-y-6">
-              <div className="rounded-full bg-slate-200 max-h-screen max-w-screen"></div>
-              <div className="flex-1 space-y-6 py-1">
-                <div className="h-96 bg-slate-200 rounded"></div>
-                <div className="space-y-5">
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="h-64 bg-slate-200 rounded col-span-2"></div>
-                    <div className="h-64 bg-slate-200 rounded col-span-1"></div>
-                  </div>
-                  <div className="h-64 bg-slate-200 rounded"></div>
-                </div>
-              </div>
+            // <div className="animate-pulse flex space-x-4 space-y-6">
+            //   <div className="rounded-full bg-slate-200 max-h-screen max-w-screen"></div>
+            //   <div className="flex-1 space-y-6 py-1">
+            //     <div className="h-96 bg-slate-200 rounded"></div>
+            //     <div className="space-y-5">
+            //       <div className="grid grid-cols-3 gap-4">
+            //         <div className="h-64 bg-slate-200 rounded col-span-2"></div>
+            //         <div className="h-64 bg-slate-200 rounded col-span-1"></div>
+            //       </div>
+            //       <div className="h-64 bg-slate-200 rounded"></div>
+            //     </div>
+            //   </div>
+            // </div>
+            <div className="h-screen text-center flex flex-row justify-center align-middle bg-slate-100">
+                <svg className="animate-spin h-5 text-white w-5 mr-3 ..." viewBox="0 0 24 24">
+                </svg>
+                <div>Scanning... You can change the window and come back again to see the results in the index page.</div>
             </div>
           ) : (
             Object.keys(scanContent?.report).map((ele: any, idx: number) => {
